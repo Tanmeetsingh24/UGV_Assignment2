@@ -35,6 +35,9 @@ constexpr uint8_t bit_VC =          0b00001000;
 constexpr uint8_t bit_CONTROLLER =  0b00010000;
 constexpr uint8_t bit_DISPLAY =     0b00100000;
 
+#define STANDARD_LASER_LENGTH 361
+#define CRASH_LIMIT 1000
+
 ref class SM_ThreadManagement
 {
 public:
@@ -59,22 +62,23 @@ public:
     array<double>^ x;
     array<double>^ y;
 
-    SM_Laser() {
+    SM_Laser() 
+    {
         lockObject = gcnew Object();
         x = gcnew array<double>(STANDARD_LASER_LENGTH);
         y = gcnew array<double>(STANDARD_LASER_LENGTH);
     }
 };
 
-ref class SM_GPS
+ref class SM_GNSS   //I Changed this from GPS to GNSS
 {
 public:
-    Object^ lockObject;
+    Object^ lockObject; 
     double Northing;
     double Easting;
     double Height;
 
-    SM_GPS() {
+    SM_GNSS() {
         lockObject = gcnew Object();
     }
 };
@@ -90,3 +94,5 @@ public:
         lockObject = gcnew Object();
     }
 };
+
+

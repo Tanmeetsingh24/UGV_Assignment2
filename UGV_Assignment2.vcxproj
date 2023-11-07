@@ -143,6 +143,18 @@
     <ClCompile Include="TMM.cpp" />
     <ClCompile Include="VC.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Controller.h" />
+    <ClInclude Include="Display.h" />
+    <ClInclude Include="GNSS.h" />
+    <ClInclude Include="include\ControllerInterface.h" />
+    <ClInclude Include="include\NetworkedModule.h" />
+    <ClInclude Include="include\SMObjects.h" />
+    <ClInclude Include="include\UGVModule.h" />
+    <ClInclude Include="Laser.h" />
+    <ClInclude Include="TMM.h" />
+    <ClInclude Include="VC.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

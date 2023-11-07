@@ -21,8 +21,11 @@ enum error_state {
 	ERR_NO_DATA,
 	ERR_INVALID_DATA,
 	ERR_SM,
-	ERR_CONNECTION
+	ERR_CONNECTION,
+	ERR_TMM_FAILURE,
 	// Define your own additional error types as needed
+	ERR_CRITICAL_PROCESS_FAILURE,         //added this for critical failures 
+	ERR_NONCRITICAL_PROCESS_FAILURE		  //added this for non critical failures
 };
 
 ref class UGVModule abstract
@@ -42,6 +45,7 @@ ref class UGVModule abstract
 		*/
 		virtual bool getShutdownFlag() = 0;
 
+		virtual void shutdownModules() = 0; //Defining this to shutdown the modules
 		/**
 		 * Main runner for the thread to perform all required actions
 		*/
@@ -67,6 +71,21 @@ ref class UGVModule abstract
 					std::cout << "ERROR: Invalid Data Received." << std::endl;
 					break;
 				// ADD PRINTOUTS FOR OTHER ERROR TYPES
+				case ERR_STARTUP:
+					std::cout << "ERROR: Startup." << std::endl;
+					break;
+				case ERR_SM:
+					std::cout << "Shared Memory Error." << std::endl;
+					break;
+				case ERR_CONNECTION:
+					std::cout << "Connection Error." << std::endl;
+					break;
+				case ERR_CRITICAL_PROCESS_FAILURE:
+					std::cout << "ERROR: Critical Process Failure." << std::endl;
+					break;
+				case ERR_NONCRITICAL_PROCESS_FAILURE:
+					std::cout << "ERROR: NONCritical Process Failure." << std::endl;
+					break;
 			}
 		}
 
